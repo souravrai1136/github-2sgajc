@@ -1,0 +1,13 @@
+<div>
+    <label>Show Children In:</label>
+    <input type="radio" name="layout" [(ngModel)]="layout" value="row"> Row
+    <input type="radio" name="layout" [(ngModel)]="layout" value="column"> Column
+  </div>
+  
+  <div [fxLayout]="layout">
+    <div fxFlex="20%" *ngFor="let child of children">
+      <app-child [name]="child.name" [money]="child.money" (moneyChange)="receiveMoney($event, child)"></app-child>
+      <button (click)="sendMoney(child)">Send Money to {{ child.name }}</button>
+      <button (click)="getMoney(child)">Get Money from {{ child.name }}</button>
+    </div>
+  </div>
